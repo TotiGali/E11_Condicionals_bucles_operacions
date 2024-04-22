@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Corregido "IE-edge" a "edge" -->
+  <title>Condicionales_Bucles_funciones_JG</title>
+  <!-- Enllaçar els estils CSS de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    main {
+      padding: 5%;
+    }
+  </style>
+</head>
+<body>
+  <main>
+        <!-- 2-IMPRIMEIX ELS NOMBRES PARELLS ENTRE DOS NOMBRES QUE INTRODUEIXI L'USUARI -->
+    <h1>CARRET DE LA COMPRA</h1> 
+    <form id="formulari">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Introdueix el preu del primer producte</span>
+        <input id="preu1" class="form-control"></input>
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Introdueix el preu del segon producte</span>
+        <input id="preu2" class="form-control"></input>
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Introdueix el preu del tercer producte</span>
+        <input id="preu3" class="form-control"></input>
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Introdueix el preu del quart producte</span>
+        <input id="preu4" class="form-control"></input>
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text">Introdueix el preu del cinqué producte</span>
+        <input id="preu5" class="form-control"></input>
+      </div>
+      <button type="submit">Calcular total</button> <!-- Afegit un botó per a calcular el total -->
+      <hr>
+      <h4>Aquest és el resultat de la teva compra:</h4>
+      <section id="resultatCompra">
+        <!-- Aquí els resultats -->
+      </section>
+      <section id="descompte">
+        <!-- Aquí els resultats -->
+      </section>
+      <section id="preufinal">
+        <!-- Aquí els resultats -->
+      </section>
+    </form> 
+  </main>
+
+  <!-- SCRIPT LAND -->
+
+  <!-- Primer es fa la suma dels tres preus -->
+  <script>
+    document.getElementById("formulari").addEventListener("submit", function(event) {
+      event.preventDefault(); // Evitar que el formulari s'enviï
+
+      // Obté els valors introduïts per l'usuari
+      var preu1 = parseInt(document.getElementById("preu1").value);
+      var preu2 = parseInt(document.getElementById("preu2").value);
+      var preu3 = parseInt(document.getElementById("preu3").value);
+      var preu4 = parseInt(document.getElementById("preu4").value);
+      var preu5 = parseInt(document.getElementById("preu5").value);
+
+      // Fes la suma dels tres valors
+      var suma = preu1 + preu2 + preu3 + preu4 + preu5;
+
+      // Aplica el descompte del 15% si la suma és major de 100
+      if (suma > 100) {
+        var descompte = suma * 0.15;
+        document.getElementById("descompte").textContent = "Com la teva compra és superior a 100€, tens un descompte del 15%, és a dir: -" + descompte + "€";
+        var preufinal = suma - descompte;
+        document.getElementById("preufinal").textContent = "En total la teva compra et surt per: " + preufinal + "€";
+      }
+
+      // Mostra el resultat
+      document.getElementById("resultatCompra").textContent = "Aquest és el resultat de la teva compra: " + suma + "€";
+    });
+  </script>
+
+ 
+  
+</body>
+</html>

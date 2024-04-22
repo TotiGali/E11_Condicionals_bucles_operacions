@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Corregido "IE-edge" a "edge" -->
+  <title>Condicionales_Bucles_funciones_JG</title>
+  <!-- Enllaçar els estils CSS de Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    main {
+      padding: 5%;
+    }
+    h4 {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- 1-IMPRIMEIX ELS NÚMROS ENTRE 20 I 50, AMBDÓS INCLOSOS EN ORDRE DESCENDENT -->
+    <br>
+    <h1>NOMBRES ENTRE 20 I 50 EN ORDRE DESCENDENT</h1> 
+    <ul id="nombres_20_50">
+      <!-- Aquí apareixeran els nombres -->
+    </ul>
+    <br>
+    <!-- 2-IMPRIMEIX ELS NOMBRES PARELLS ENTRE DOS NOMBRES QUE INTRODUEIXI L'USUARI -->
+    <h1>NOMBRES PARELLS</h1> 
+    <form id="formulari">
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="nombre1">Introdueix el primer nombre</span>
+        <input name="nombre1" class="form-control"></input>
+      </div>
+      <div class="input-group input-group-sm mb-3">
+        <span class="input-group-text" id="nombre2">Introdueix el segon nombre</span>
+        <input name="nombre2" class="form-control"></input>
+      </div>
+      <h4>Aquets son els nombres parells entre els nombres que has introduit:</h4>
+      <section id="resultatNombresParells">
+        <!-- Aquí els resultats -->
+      </section>
+    </form>
+    <br>
+    <!-- 3-CARRET DE LA COMPRA -->
+    <h1>CARRET DE LA COMPRA</h1> 
+    <br>
+  </main>
+
+  <!-- SCRIPT LAND -->
+
+  <!-- NOMBRES ENTRE 20 I 50 -->
+
+  <script>
+    // Obté l'element <ul> on mostrarem els números
+    var listaNumeros = document.getElementById("nombres_20_50");
+
+    // Itera des de 50 fins a 20 en ordre descendent
+    for (var i = 50; i >= 20; i--) {
+        // Crea un nou element <li> per a cada número i afegeix-lo a la llista
+        var nouElement = document.createElement("li");
+        nouElement.textContent = i;
+        listaNumeros.appendChild(nouElement);
+    }
+  </script> 
+
+    
+  <!-- 2-IMPRIMEIX ELS NOMBRES PARELLS ENTRE DOS NOMBRES QUE INTRODUEIXI L'USUARI  -->
+  <script>
+    document.getElementById("formulari").addEventListener("input", function() {
+
+    // Obtenir els nombres introduïts per l'usuari
+    var nombre1 = parseInt(document.querySelector("input[name='nombre1']").value);
+    var nombre2 = parseInt(document.querySelector("input[name='nombre2']").value);
+
+    // Verificar que nombre1 és menor o igual a nombre2
+    if (nombre1 > nombre2) {
+      var temp = nombre1;
+      nombre1 = nombre2;
+      nombre2 = temp;
+    }
+
+    // Trobar nombres parells i mostrar-los
+    var resultatNombresParells = document.getElementById("resultatNombresParells");
+    resultatNombresParells.innerHTML = ""; // Netegem qualsevol resultat anterior
+
+    for (var u = nombre1; u <= nombre2; u++) {
+      if (u % 2 === 0) {
+        var paragraf = document.createElement("p");
+        paragraf.textContent = u;
+        resultatNombresParells.appendChild(paragraf);
+      }
+    }
+    });
+  </script> 
+  
+</body>
+</html>
